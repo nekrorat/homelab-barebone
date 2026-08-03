@@ -9,3 +9,6 @@ user-data
 meta-data
 !user-data.template
 !meta-data.template
+
+# idea
+.idea
