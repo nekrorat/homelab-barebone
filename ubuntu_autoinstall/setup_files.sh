@@ -5,8 +5,8 @@ OUTPUT_DIR="$SCRIPT_DIR/output"
 
 mkdir -p "$OUTPUT_DIR"
 
-USER_DATA_TEMPLATE="$SCRIPT_DIR/templates/user-data.template"
-META_DATA_TEMPLATE="$SCRIPT_DIR/templates/meta-data.template"
+USER_DATA_TEMPLATE="$SCRIPT_DIR/templates/user-data-template.yaml"
+META_DATA_TEMPLATE="$SCRIPT_DIR/templates/meta-data-template.yaml"
 USER_DATA_OUTPUT_FILE="$OUTPUT_DIR/user-data"
 META_DATA_OUTPUT_FILE="$OUTPUT_DIR/meta-data"
 

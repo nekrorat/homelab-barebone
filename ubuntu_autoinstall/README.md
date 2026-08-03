@@ -60,9 +60,9 @@ supplying them to the Ubuntu Server installer.
 
 ## Templates
 
-- [`templates/user-data.template`](./templates/user-data.template) contains the
+- `templates/user-data-template.yaml` contains the
   Autoinstall and cloud-init configuration.
-- [`templates/meta-data.template`](./templates/meta-data.template) sets the
+- `templates/meta-data-template.yaml` sets the
   NoCloud instance ID to the supplied hostname.
 
 The script replaces these variables automatically:
