@@ -30,9 +30,9 @@ Choose one of the following options.
 Copy the templates to the `output` folder:
 
 ```bash
-mkdir -p ubuntu_autoinstall/output
-cp ubuntu_autoinstall/templates/user-data-template.yaml ubuntu_autoinstall/output/user-data
-cp ubuntu_autoinstall/templates/meta-data-template.yaml ubuntu_autoinstall/output/meta-data
+mkdir -p ubuntu-autoinstall/output
+cp ubuntu-autoinstall/templates/user-data-template.yaml ubuntu-autoinstall/output/user-data
+cp ubuntu-autoinstall/templates/meta-data-template.yaml ubuntu-autoinstall/output/meta-data
 ```
 
 Generate a password hash:
@@ -80,13 +80,13 @@ sudo apt install gettext-base openssl
 From the repository root, run:
 
 ```bash
-./ubuntu_autoinstall/setup_files.sh
+./ubuntu-autoinstall/setup_files.sh
 ```
 
 Generated files are written to:
 
 ```text
-ubuntu_autoinstall/output/
+ubuntu-autoinstall/output/
 ├── user-data
 └── meta-data
 ```
@@ -108,7 +108,7 @@ Running the script again overwrites both files.
 1. Start an HTTP server and leave the terminal running:
 
    ```bash
-   cd ubuntu_autoinstall/output
+   cd ubuntu-autoinstall/output
    python3 -m http.server 8001
    ```
 
