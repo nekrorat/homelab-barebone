@@ -4,7 +4,7 @@
 !.env.example
 
 # user files
-ubuntu_autoinstall/output/*
+ubuntu_autoinstall/output/
 user-data
 meta-data
 !user-data.template

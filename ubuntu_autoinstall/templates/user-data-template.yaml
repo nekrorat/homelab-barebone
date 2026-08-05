@@ -12,7 +12,7 @@ autoinstall:  # starts the autoinstall configuration
     hostname: ${HOSTNAME}  # replace it with a hostname
     realname: ${REALNAME}  # replace it with the admin name
     username: ${USERNAME}  # replace it with the username
-    password: '${PASSWORD_HASH}'  # replace it with a password hash (See README.md)
+    password: '${PASSWORD_HASH}'  # replace it with a password hash
 
   ssh:  # configures SSH access to the installed server
     install-server: true  # installs and enables the OpenSSH server
