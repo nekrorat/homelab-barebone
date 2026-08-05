@@ -1,3 +1,6 @@
+# Why use Autoinstall?
+It applies Infrastructure as Code (IaC) principles to replace repetitive manual setup with a consistent, reusable configuration, making Ubuntu Server provisioning faster and less error-prone.
+
 # Ubuntu Server Autoinstall Files
 
 Templates and an interactive script for generating Ubuntu Server Autoinstall
