@@ -1,0 +1,7 @@
+#!ipxe
+
+echo ============================================
+echo !TEST! Homelab PXE boot script loaded !TEST!
+echo ============================================
+
+shell

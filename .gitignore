@@ -3,12 +3,12 @@
 .env.*
 !.env.example
 
-# user files
-ubuntu-autoinstall/output/
-user-data
-meta-data
-!user-data.template
-!meta-data.template
+proxmox/*.iso
+proxmox/vmlinuz
+proxmox/initrd.img
+proxmox/pxe/proxmox-installer
+proxmox/answers/*.toml
+!proxmox/answers/*.example.toml
 
 # idea
 .idea/

@@ -1,0 +1,20 @@
+[global]
+keyboard = "en-us" # Keyboard layout
+country = "us" # Two-letter country code
+fqdn = "pve01.example.com" # Proxmox host FQDN
+mailto = "admin@example.com" # Administrator email address
+timezone = "America/New_York" # System timezone
+root-password = "change-this-to-strong-password" # Initial root password
+
+[network]
+source = "from-answer" # Use supplied network settings
+cidr = "192.168.8.21/24" # Static address and prefix
+dns = "1192.168.8.1" # DNS server address
+gateway = "192.168.8.1" # Default gateway address
+
+[network.filter]
+ID_NET_NAME_MAC = "enx001122334455" # Network interface identifier
+
+[disk-setup]
+filesystem = "ext4" # Root filesystem type
+disk-list = ["nvme0n1"] # Installation target disks

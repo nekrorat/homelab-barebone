@@ -1,0 +1,20 @@
+services:
+  pxe-http:
+    image: python:3.13-alpine
+    working_dir: /srv/proxmox
+    volumes:
+      - ./proxmox:/srv/proxmox:ro
+      - ./docker/pxe-http/server.py:/server.py:ro
+    ports:
+      - "8002:8002"
+    command: ["python3", "/server.py"]
+  proxmox-tooling:
+    profiles:
+      - manual_only
+    build:
+      context: .
+      dockerfile: docker/proxmox-tooling/Dockerfile
+    image: homelab-proxmox-auto-install
+    working_dir: /work
+    volumes:
+      - ./proxmox:/work

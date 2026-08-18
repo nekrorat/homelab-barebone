@@ -1,0 +1,34 @@
+#!ipxe
+
+:start
+menu Homelab PXE Boot
+item --gap -- ---------------- Proxmox ----------------
+item proxmox Install Proxmox VE
+item --gap -- ---------------- Tools ------------------
+item shell Open iPXE shell
+item reboot Reboot
+item exit Exit iPXE and continue local boot
+
+choose --default exit --timeout 10000 target || goto exit
+goto ${target}
+
+:proxmox
+kernel http://192.168.8.220:8002/pxe/proxmox-installer/vmlinuz \
+    initrd=initrd.img \
+    ramdisk_size=16777216 \
+    rw \
+    splash=verbose \
+    proxmox-start-auto-installer
+initrd http://192.168.8.220:8002/pxe/proxmox-installer/initrd.img
+initrd http://192.168.8.220:8002/proxmox-ve_9.2-1-auto-from-http-url.iso proxmox.iso
+boot
+
+:shell
+shell
+goto start
+
+:reboot
+reboot
+
+:exit
+exit
