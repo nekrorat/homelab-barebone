@@ -58,6 +58,8 @@ Real answer files are ignored by Git because they contain credentials and enviro
 
 ## Prepare the installer
 
+The official Proxmox ISO inventory page: https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso
+
 Place the official ISO in `proxmox/`, then build the tooling container:
 
 ```sh
