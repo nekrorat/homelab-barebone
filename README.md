@@ -14,6 +14,7 @@ The purpose of this repository is to provide a reproducible starting point for a
 | `docker-compose.yaml` | Runs the HTTP server and build tooling |
 | `docker/proxmox-tooling/Dockerfile` | Packages the Proxmox auto-install assistant |
 | `docker/pxe-http/server.py` | Serves PXE assets and answer files |
+| `proxmox/get_proxmox_iso.sh` | Downloads a Proxmox VE ISO and verifies its SHA-256 checksum |
 | `proxmox/answers/pve01.example.toml` | Documents an example node installation |
 | `proxmox/pxe/boot.ipxe` | Provides the homelab boot menu |
 | `proxmox/pxe/test-boot.ipxe` | Tests iPXE script delivery |
@@ -34,7 +35,7 @@ PXE booting loads the installer ISO into memory, so the target should have at le
 ## Prerequisites
 
 - Docker Engine with Docker Compose
-- A downloaded Proxmox VE installer ISO
+- `wget` and `sha256sum` to download and verify the Proxmox VE installer ISO
 - A DHCP/TFTP or equivalent network-boot environment
 - An iPXE-capable target machine
 - Network access from the target to TCP port `8002` on the Docker host
@@ -58,9 +59,36 @@ Real answer files are ignored by Git because they contain credentials and enviro
 
 ## Prepare the installer
 
-The official Proxmox ISO inventory page: https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso
+First, choose either the download script or the manual process. Both options place the verified ISO in `proxmox/`, where the tooling container expects it.
 
-Place the official ISO in `proxmox/`, then build the tooling container:
+### Option 1: Download and verify with the script
+
+Run the helper from the `proxmox/` directory:
+
+```sh
+cd proxmox
+bash get_proxmox_iso.sh
+cd ..
+```
+
+Press Enter to download the script's default Proxmox VE version and verify it against the included SHA-256 checksum. If you select another version, copy its SHA-256 checksum from the [official Proxmox ISO inventory](https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso) and enter it when prompted.
+
+### Option 2: Download and verify manually
+
+Choose a version from the [official Proxmox ISO inventory](https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso), then download the ISO into `proxmox/`. Replace `<VERSION>` and `<SHA256>` with the values published by Proxmox:
+
+```sh
+cd proxmox
+wget "https://enterprise.proxmox.com/iso/proxmox-ve_<VERSION>.iso"
+echo "<SHA256>  proxmox-ve_<VERSION>.iso" | sha256sum --check
+cd ..
+```
+
+Continue only when `sha256sum` reports `OK`.
+
+### Build and prepare the ISO
+
+With the downloaded ISO in `proxmox/`, build the tooling container:
 
 ```sh
 docker compose --profile manual_only build proxmox-tooling
