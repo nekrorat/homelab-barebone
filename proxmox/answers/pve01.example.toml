@@ -9,11 +9,11 @@ root-password = "change-this-to-strong-password" # Initial root password
 [network]
 source = "from-answer" # Use supplied network settings
 cidr = "192.168.8.21/24" # Static address and prefix
-dns = "1192.168.8.1" # DNS server address
+dns = "192.168.8.1" # DNS server address
 gateway = "192.168.8.1" # Default gateway address
 
 [network.filter]
-ID_NET_NAME_MAC = "enx001122334455" # Network interface identifier
+ID_NET_NAME_MAC = "enx001122334455" # Network interface identifier (MAC Address)
 
 [disk-setup]
 filesystem = "ext4" # Root filesystem type
